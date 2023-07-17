@@ -26,7 +26,6 @@ namespace ProyectoSistemaProcesos.GUI
             label6 = new Label();
             label7 = new Label();
             comboBox1 = new ComboBox();
-            textBox1 = new TextBox();
             comboBox2 = new ComboBox();
             textBox2 = new TextBox();
             textBox3 = new TextBox();
@@ -40,6 +39,8 @@ namespace ProyectoSistemaProcesos.GUI
             openFileDialog1 = new OpenFileDialog();
             pictureBox5 = new PictureBox();
             pictureBox6 = new PictureBox();
+            colorDialog1 = new ColorDialog();
+            panel2 = new Panel();
             panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)pictureBox4).BeginInit();
             ((System.ComponentModel.ISupportInitialize)pictureBox3).BeginInit();
@@ -137,21 +138,17 @@ namespace ProyectoSistemaProcesos.GUI
             // comboBox1
             // 
             comboBox1.FormattingEnabled = true;
+            comboBox1.Items.AddRange(new object[] { "Delanteros", "Mangas", "Cuello" });
             comboBox1.Location = new Point(33, 210);
             comboBox1.Name = "comboBox1";
             comboBox1.Size = new Size(230, 23);
             comboBox1.TabIndex = 27;
-            // 
-            // textBox1
-            // 
-            textBox1.Location = new Point(33, 270);
-            textBox1.Name = "textBox1";
-            textBox1.Size = new Size(230, 23);
-            textBox1.TabIndex = 28;
+            comboBox1.Text = "-- Seleccione el tipo --";
             // 
             // comboBox2
             // 
             comboBox2.FormattingEnabled = true;
+            comboBox2.Items.AddRange(new object[] { "XS", "S", "M", "L", "XL", "2XL", "3XL" });
             comboBox2.Location = new Point(33, 330);
             comboBox2.Name = "comboBox2";
             comboBox2.Size = new Size(229, 23);
@@ -261,12 +258,22 @@ namespace ProyectoSistemaProcesos.GUI
             pictureBox6.TabStop = false;
             pictureBox6.Click += pictureBox6_Click;
             // 
+            // panel2
+            // 
+            panel2.BackColor = Color.White;
+            panel2.Location = new Point(31, 270);
+            panel2.Name = "panel2";
+            panel2.Size = new Size(230, 23);
+            panel2.TabIndex = 41;
+            panel2.Click += OpenColorDialog;
+            // 
             // Form_Moldes
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
             BackColor = SystemColors.Control;
             ClientSize = new Size(794, 611);
+            Controls.Add(panel2);
             Controls.Add(pictureBox6);
             Controls.Add(pictureBox5);
             Controls.Add(pictureBox4);
@@ -279,7 +286,6 @@ namespace ProyectoSistemaProcesos.GUI
             Controls.Add(textBox3);
             Controls.Add(textBox2);
             Controls.Add(comboBox2);
-            Controls.Add(textBox1);
             Controls.Add(comboBox1);
             Controls.Add(label7);
             Controls.Add(label6);
@@ -336,7 +342,6 @@ namespace ProyectoSistemaProcesos.GUI
         private Label label6;
         private Label label7;
         private ComboBox comboBox1;
-        private TextBox textBox1;
         private ComboBox comboBox2;
         private TextBox textBox2;
         private TextBox textBox3;
@@ -350,5 +355,7 @@ namespace ProyectoSistemaProcesos.GUI
         private OpenFileDialog openFileDialog1;
         private PictureBox pictureBox5;
         private PictureBox pictureBox6;
+        private ColorDialog colorDialog1;
+        private Panel panel2;
     }
 }

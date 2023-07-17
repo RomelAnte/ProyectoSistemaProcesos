@@ -34,12 +34,17 @@ namespace ProyectoSistemaProcesos.GUI
 
                 if (openFileDialog.ShowDialog() == DialogResult.OK)
                 {
-                    // Obtén la ruta del archivo seleccionado
                     string rutaImagen = openFileDialog.FileName;
-
-                    // Carga la imagen en un control PictureBox
                     pictureBox5.Image = Image.FromFile(rutaImagen);
                 }
+            }
+        }
+        private void OpenColorDialog(object sender, EventArgs e)
+        {
+            var colorDialog = new ColorDialog();
+            if (colorDialog.ShowDialog() == DialogResult.OK)
+            {
+                panel2.BackColor = colorDialog.Color;
             }
         }
     }
