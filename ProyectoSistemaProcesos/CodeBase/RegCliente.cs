@@ -16,30 +16,50 @@ namespace ProyectoSistemaProcesos.CodeBase
         {
             try
             {
+                string ci = "";
+                string query1 = "select CI_Cli from Clientes where CI_Cli=@CI_Cli;";
                 string query = "INSERT INTO Clientes (nom_Cli, apell_Cli, CI_Cli, fono_Cli, direc_Cli, E_Cli) VALUES (@nom_Cli, @apell_Cli, @CI_Cli, @fono_Cli, @direc_Cli, @E_Cli);";
                 _connection.ConnectionString = connectionString;
                 _connection.Open();
-                using (MySqlCommand command = new MySqlCommand(query, _connection))
+                using (MySqlCommand command = new MySqlCommand(query1, _connection))
                 {
-                    command.Parameters.AddWithValue("@nom_Cli", obj[1]);
-                    command.Parameters.AddWithValue("@apell_Cli", obj[2]);
                     command.Parameters.AddWithValue("@CI_Cli", obj[0]);
-                    command.Parameters.AddWithValue("@fono_Cli", obj[3]);
-                    command.Parameters.AddWithValue("@direc_Cli", obj[4]);
-                    command.Parameters.AddWithValue("@E_Cli", obj[5]);
-                    int rowsAffected = command.ExecuteNonQuery();
-                    if (rowsAffected > 0)
+
+                    using (MySqlDataReader reader = command.ExecuteReader())
                     {
-                        MessageBox.Show("Inserción exitosa");
-                        Console.WriteLine();
-                    }
-                    else
-                    {
-                        MessageBox.Show("No se pudo insertar");
-                        Console.WriteLine();
+                        if (reader.Read())
+                        {
+                            ci = reader.GetString("CI_Cli");
+                        }
                     }
                 }
-                _connection.Close();
+                if (ci != obj[0].ToString())
+                {
+                    using (MySqlCommand command = new MySqlCommand(query, _connection))
+                    {
+                        command.Parameters.AddWithValue("@nom_Cli", obj[1]);
+                        command.Parameters.AddWithValue("@apell_Cli", obj[2]);
+                        command.Parameters.AddWithValue("@CI_Cli", obj[0]);
+                        command.Parameters.AddWithValue("@fono_Cli", obj[3]);
+                        command.Parameters.AddWithValue("@direc_Cli", obj[4]);
+                        command.Parameters.AddWithValue("@E_Cli", obj[5]);
+                        int rowsAffected = command.ExecuteNonQuery();
+                        if (rowsAffected > 0)
+                        {
+                            MessageBox.Show("Inserción exitosa");
+                        }
+                        else
+                        {
+                            MessageBox.Show("No se pudo insertar");
+                        }
+                    }
+                    _connection.Close();
+                }
+                else
+                {
+                    MessageBox.Show("El cliente ya existe en la base de datos");
+                }
+
             }
             catch (MySqlException ex)
             {

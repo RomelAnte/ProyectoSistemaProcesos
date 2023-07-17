@@ -108,9 +108,10 @@ namespace ProyectoSistemaProcesos
             label4.ForeColor = Color.FromArgb(0, 0, 255);
             label4.Location = new Point(83, 351);
             label4.Name = "label4";
-            label4.Size = new Size(153, 16);
+            label4.Size = new Size(175, 16);
             label4.TabIndex = 19;
-            label4.Text = "Olvidaste tu contraseña";
+            label4.Text = "Actualizar datos de ingreso";
+            label4.Click += label4_Click;
             // 
             // Form_Inicio
             // 
@@ -135,6 +136,7 @@ namespace ProyectoSistemaProcesos
             ResumeLayout(false);
             PerformLayout();
         }
+
         private void fondo()
         {
             LinearGradientBrush brush = new LinearGradientBrush(ClientRectangle, ColorTranslator.FromHtml("#FFFFFF"), ColorTranslator.FromHtml("#10739E"), 0f);

@@ -17,14 +17,19 @@ namespace ProyectoSistemaProcesos
             string password = textBox2.Text;
             bool validar = login.IsLoggedIn(user, password);
             if (validar == true) { */
-                Form_Menu form_Menu = new Form_Menu();
-                this.Hide();
-                form_Menu.Show();
+            Form_Menu form_Menu = new Form_Menu();
+            this.Hide();
+            form_Menu.Show();
             /*}
             else
             {
                 MessageBox.Show("Ingrese las credenciales correctas");
             }*/
+        }
+
+        private void label4_Click(object sender, EventArgs e)
+        {
+
         }
     }
 }
