@@ -110,7 +110,7 @@ namespace ProyectoSistemaProcesos
         private void textBox1_KeyPress(object sender, KeyPressEventArgs e)
         {
             // Verifica si el carácter ingresado no es una letra
-            if (!char.IsLetter(e.KeyChar) && !char.IsControl(e.KeyChar))
+            if (!char.IsLetter(e.KeyChar) && !char.IsControl(e.KeyChar) && e.KeyChar != ' ')
             {
                 e.Handled = true; // Ignora el carácter ingresado
             }

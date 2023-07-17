@@ -23,6 +23,8 @@ namespace ProyectoSistemaProcesos
             textBox2.Clear();
             textBox3.Clear();
             textBox4.Clear();
+            dateTimePicker1.Value = DateTime.Now;
+            textBox6.Clear();
             textBox7.Clear();
             textBox8.Clear();
             checkBox1.Checked = false;
@@ -148,7 +150,7 @@ namespace ProyectoSistemaProcesos
         }
         private void textBox1_KeyPress(object sender, KeyPressEventArgs e)
         {
-            if (!char.IsLetter(e.KeyChar) && !char.IsControl(e.KeyChar))
+            if (!char.IsLetter(e.KeyChar) && !char.IsControl(e.KeyChar) && e.KeyChar != ' ')
             {
                 e.Handled = true; // Ignora el carácter ingresado
             }

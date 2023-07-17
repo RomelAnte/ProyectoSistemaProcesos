@@ -15,34 +15,55 @@ namespace ProyectoSistemaProcesos.CodeBase
         {
             try
             {
+                string ci = "";
+                string query1 = "select CI_Maqui from Maquiladores where CI_Maqui=@CI_Maqui;";
                 string query = "INSERT INTO Maquiladores (CI_Maqui, nom_Maqui, apell_Maqui, fechaNaci, mail_Maqui,fono_Maqui,direc_Maqui,cargo_Maqui,E_Maqui) " +
                     "VALUES (@CI_Maqui, @nom_Maqui, @apell_Maqui, @fechaNaci, @mail_Maqui, @fono_Maqui,@direc_Maqui,@cargo_Maqui,@E_Maqui);";
                 _connection.ConnectionString = connectionString;
                 _connection.Open();
-                using (MySqlCommand command = new MySqlCommand(query, _connection))
+                using (MySqlCommand command = new MySqlCommand(query1, _connection))
                 {
                     command.Parameters.AddWithValue("@CI_Maqui", obj[0]);
-                    command.Parameters.AddWithValue("@nom_Maqui", obj[1]);
-                    command.Parameters.AddWithValue("@apell_Maqui", obj[2]);
-                    command.Parameters.AddWithValue("@fechaNaci", obj[3]);
-                    command.Parameters.AddWithValue("@mail_Maqui", obj[4]);
-                    command.Parameters.AddWithValue("@fono_Maqui", obj[5]);
-                    command.Parameters.AddWithValue("@direc_Maqui", obj[6]);
-                    command.Parameters.AddWithValue("@cargo_Maqui", obj[7]);
-                    command.Parameters.AddWithValue("@E_Maqui", obj[8]);
-                    int rowsAffected = command.ExecuteNonQuery();
-                    if (rowsAffected > 0)
+
+                    using (MySqlDataReader reader = command.ExecuteReader())
                     {
-                        MessageBox.Show("Inserción exitosa");
-                        Console.WriteLine();
-                    }
-                    else
-                    {
-                        MessageBox.Show("No se pudo insertar");
-                        Console.WriteLine();
+                        if (reader.Read())
+                        {
+                            ci = reader.GetString("CI_Maqui");
+                        }
                     }
                 }
-                _connection.Close();
+                if (ci != obj[0].ToString())
+                {
+                    using (MySqlCommand command = new MySqlCommand(query, _connection))
+                    {
+                        command.Parameters.AddWithValue("@CI_Maqui", obj[0]);
+                        command.Parameters.AddWithValue("@nom_Maqui", obj[1]);
+                        command.Parameters.AddWithValue("@apell_Maqui", obj[2]);
+                        command.Parameters.AddWithValue("@fechaNaci", obj[3]);
+                        command.Parameters.AddWithValue("@mail_Maqui", obj[4]);
+                        command.Parameters.AddWithValue("@fono_Maqui", obj[5]);
+                        command.Parameters.AddWithValue("@direc_Maqui", obj[6]);
+                        command.Parameters.AddWithValue("@cargo_Maqui", obj[7]);
+                        command.Parameters.AddWithValue("@E_Maqui", obj[8]);
+                        int rowsAffected = command.ExecuteNonQuery();
+                        if (rowsAffected > 0)
+                        {
+                            MessageBox.Show("Inserción exitosa");
+                            Console.WriteLine();
+                        }
+                        else
+                        {
+                            MessageBox.Show("No se pudo insertar");
+                            Console.WriteLine();
+                        }
+                    }
+                    _connection.Close();
+                }
+                else
+                {
+                    MessageBox.Show("El empleado ya existe en la base de datos");
+                }
             }
             catch (MySqlException ex)
             {
