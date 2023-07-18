@@ -29,12 +29,9 @@ namespace ProyectoSistemaProcesos.GUI
             comboBox2 = new ComboBox();
             textBox2 = new TextBox();
             textBox3 = new TextBox();
-            textBox4 = new TextBox();
             label8 = new Label();
             textBox5 = new TextBox();
             pictureBox4 = new PictureBox();
-            pictureBox3 = new PictureBox();
-            pictureBox2 = new PictureBox();
             pictureBox1 = new PictureBox();
             openFileDialog1 = new OpenFileDialog();
             pictureBox5 = new PictureBox();
@@ -43,8 +40,6 @@ namespace ProyectoSistemaProcesos.GUI
             panel2 = new Panel();
             panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)pictureBox4).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)pictureBox3).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)pictureBox2).BeginInit();
             ((System.ComponentModel.ISupportInitialize)pictureBox1).BeginInit();
             ((System.ComponentModel.ISupportInitialize)pictureBox5).BeginInit();
             ((System.ComponentModel.ISupportInitialize)pictureBox6).BeginInit();
@@ -160,6 +155,7 @@ namespace ProyectoSistemaProcesos.GUI
             textBox2.Name = "textBox2";
             textBox2.Size = new Size(229, 23);
             textBox2.TabIndex = 30;
+            textBox2.TextChanged += textBox2_TextChanged;
             // 
             // textBox3
             // 
@@ -167,13 +163,7 @@ namespace ProyectoSistemaProcesos.GUI
             textBox3.Name = "textBox3";
             textBox3.Size = new Size(100, 23);
             textBox3.TabIndex = 31;
-            // 
-            // textBox4
-            // 
-            textBox4.Location = new Point(36, 613);
-            textBox4.Name = "textBox4";
-            textBox4.Size = new Size(100, 23);
-            textBox4.TabIndex = 32;
+            textBox3.TextChanged += textBox3_TextChanged;
             // 
             // label8
             // 
@@ -188,6 +178,7 @@ namespace ProyectoSistemaProcesos.GUI
             // 
             // textBox5
             // 
+            textBox5.Enabled = false;
             textBox5.Location = new Point(35, 510);
             textBox5.Name = "textBox5";
             textBox5.Size = new Size(100, 23);
@@ -197,32 +188,12 @@ namespace ProyectoSistemaProcesos.GUI
             // 
             pictureBox4.BackColor = Color.Transparent;
             pictureBox4.Image = Properties.Resources.descarga;
-            pictureBox4.Location = new Point(551, 490);
+            pictureBox4.Location = new Point(546, 390);
             pictureBox4.Name = "pictureBox4";
             pictureBox4.Size = new Size(75, 75);
             pictureBox4.TabIndex = 38;
             pictureBox4.TabStop = false;
             pictureBox4.Click += pictureBox4_Click;
-            // 
-            // pictureBox3
-            // 
-            pictureBox3.BackColor = Color.Transparent;
-            pictureBox3.Image = Properties.Resources.cancel;
-            pictureBox3.Location = new Point(661, 390);
-            pictureBox3.Name = "pictureBox3";
-            pictureBox3.Size = new Size(75, 75);
-            pictureBox3.TabIndex = 37;
-            pictureBox3.TabStop = false;
-            // 
-            // pictureBox2
-            // 
-            pictureBox2.BackColor = Color.Transparent;
-            pictureBox2.Image = Properties.Resources.icons8_synchronize_80;
-            pictureBox2.Location = new Point(551, 390);
-            pictureBox2.Name = "pictureBox2";
-            pictureBox2.Size = new Size(75, 75);
-            pictureBox2.TabIndex = 36;
-            pictureBox2.TabStop = false;
             // 
             // pictureBox1
             // 
@@ -233,6 +204,7 @@ namespace ProyectoSistemaProcesos.GUI
             pictureBox1.Size = new Size(75, 75);
             pictureBox1.TabIndex = 35;
             pictureBox1.TabStop = false;
+            pictureBox1.Click += pictureBox1_Click;
             // 
             // openFileDialog1
             // 
@@ -277,12 +249,9 @@ namespace ProyectoSistemaProcesos.GUI
             Controls.Add(pictureBox6);
             Controls.Add(pictureBox5);
             Controls.Add(pictureBox4);
-            Controls.Add(pictureBox3);
-            Controls.Add(pictureBox2);
             Controls.Add(pictureBox1);
             Controls.Add(textBox5);
             Controls.Add(label8);
-            Controls.Add(textBox4);
             Controls.Add(textBox3);
             Controls.Add(textBox2);
             Controls.Add(comboBox2);
@@ -300,8 +269,6 @@ namespace ProyectoSistemaProcesos.GUI
             Text = "Form_Moldes";
             panel1.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)pictureBox4).EndInit();
-            ((System.ComponentModel.ISupportInitialize)pictureBox3).EndInit();
-            ((System.ComponentModel.ISupportInitialize)pictureBox2).EndInit();
             ((System.ComponentModel.ISupportInitialize)pictureBox1).EndInit();
             ((System.ComponentModel.ISupportInitialize)pictureBox5).EndInit();
             ((System.ComponentModel.ISupportInitialize)pictureBox6).EndInit();
@@ -345,12 +312,9 @@ namespace ProyectoSistemaProcesos.GUI
         private ComboBox comboBox2;
         private TextBox textBox2;
         private TextBox textBox3;
-        private TextBox textBox4;
         private Label label8;
         private TextBox textBox5;
         private PictureBox pictureBox4;
-        private PictureBox pictureBox3;
-        private PictureBox pictureBox2;
         private PictureBox pictureBox1;
         private OpenFileDialog openFileDialog1;
         private PictureBox pictureBox5;

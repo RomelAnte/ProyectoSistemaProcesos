@@ -7,11 +7,13 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using static System.Windows.Forms.VisualStyles.VisualStyleElement;
 
 namespace ProyectoSistemaProcesos.GUI
 {
     public partial class Form_Moldes : Form
     {
+        Object[] obj = new Object[6];
         public Form_Moldes()
         {
             InitializeComponent();
@@ -46,6 +48,42 @@ namespace ProyectoSistemaProcesos.GUI
             {
                 panel2.BackColor = colorDialog.Color;
             }
+        }
+        private void textBox2_TextChanged(object sender, EventArgs e)
+        {
+            CalcularMultiplicacion();
+        }
+
+        private void textBox3_TextChanged(object sender, EventArgs e)
+        {
+            CalcularMultiplicacion();
+        }
+        private void CalcularMultiplicacion()
+        {
+            if (double.TryParse(textBox2.Text, out double valor1) && double.TryParse(textBox3.Text, out double valor2))
+            {
+                double resultado = valor1 * valor2;
+                textBox5.Text = resultado.ToString();
+            }
+            else
+            {
+                textBox5.Text = string.Empty;
+            }
+        }
+
+        private void pictureBox1_Click(object sender, EventArgs e)
+        {
+            ColorDialog colorDialog = new ColorDialog();
+            obj[0] = comboBox1.SelectedItem.ToString();
+            Color selectedColor = colorDialog.Color;
+            string codigoColor = selectedColor.Name;
+            obj[1] = codigoColor;
+            MessageBox.Show(codigoColor);
+            obj[2] = comboBox2.SelectedItem.ToString();
+            obj[3] = textBox2.Text;
+            obj[4] = textBox3.Text;
+            obj[5] = textBox5.Text;
+
         }
     }
 }
