@@ -1,4 +1,5 @@
-﻿using System;
+﻿using ProyectoSistemaProcesos.CodeBase;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -74,6 +75,7 @@ namespace ProyectoSistemaProcesos.GUI
         private void pictureBox1_Click(object sender, EventArgs e)
         {
             ColorDialog colorDialog = new ColorDialog();
+            RegMolde regMolde = new RegMolde();
             obj[0] = comboBox1.SelectedItem.ToString();
             Color selectedColor = colorDialog.Color;
             string codigoColor = selectedColor.Name;
@@ -83,6 +85,7 @@ namespace ProyectoSistemaProcesos.GUI
             obj[3] = textBox2.Text;
             obj[4] = textBox3.Text;
             obj[5] = textBox5.Text;
+            regMolde.registrarMolde(obj);
 
         }
     }
