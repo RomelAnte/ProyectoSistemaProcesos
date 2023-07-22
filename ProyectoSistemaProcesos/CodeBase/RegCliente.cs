@@ -11,7 +11,7 @@ namespace ProyectoSistemaProcesos.CodeBase
     public class RegCliente
     {
         MySqlConnection _connection = new MySqlConnection();
-        string connectionString = "server=localhost;database=BDDSistemProc;uid=root;password=abcd1234;";
+        string connectionString = "server=localhost;database=BDDSistemProc;uid=root;password=magenkiosharingan123;";
         public void registrarCliente(object[] obj)
         {
             try

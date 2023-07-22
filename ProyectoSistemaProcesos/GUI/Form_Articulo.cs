@@ -30,9 +30,16 @@ namespace ProyectoSistemaProcesos.GUI
 
         }
 
+<<<<<<< HEAD
         private void pictureBox7_Click(object sender, EventArgs e)
         {
 
+=======
+        private void label8_Click(object sender, EventArgs e)
+        {
+
+
+>>>>>>> 0d73d35bddaf4c2b0a7caa2c896fbcd441681cd5
         }
     }
 }

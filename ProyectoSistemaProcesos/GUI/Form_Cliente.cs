@@ -125,5 +125,10 @@ namespace ProyectoSistemaProcesos
             string ci = textBox1.Text;
             usuario.Eliminar(1,ci);
         }
+
+        private void pictureBox1_Click_1(object sender, EventArgs e)
+        {
+
+        }
     }
 }
