@@ -41,8 +41,8 @@ id_Mold int primary key not null auto_increment,
 color_Mold varchar (30) not null,
 Talla_Mold varchar (5) not null,
 Cantidad_Mold int not null,
-precio_Mold decimal(5,2),
-TotalC_Mold decimal(5,2) as (Cantidad_Mold*precio_Mold)not null,
+precio_Mold decimal(5,2)not null,
+TotalC_Mold decimal(5,2)not null,
 fkid_TMold int not null,
 foreign key (fkid_TMold) references TipoMolde(id_TMold)
 );
@@ -106,6 +106,4 @@ foreign key (fkid_Vp) references VentasyPagos(id_Vp)
 );
 
 insert into Usuario (user_usu,pass_usu) values('Patricio1','Patricio1');
-Select * from Maquiladores;
-delete  from Maquiladores;
-select id_Cli from Clientes where CI_Cli='0504018250';
+Select * from Molde;

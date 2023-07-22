@@ -14,6 +14,7 @@ namespace ProyectoSistemaProcesos
     public partial class Form_Cliente : Form
     {
         object[] obj = new object[7];
+        Usuario usuario = new Usuario();
         public void limpiar()
         {
             textBox2.Clear();
@@ -47,13 +48,13 @@ namespace ProyectoSistemaProcesos
         }
         private void pictureBox1_Click(object sender, EventArgs e)
         {
-            obj[0] = textBox2.Text;
-            obj[1] = textBox3.Text;
-            obj[2] = textBox4.Text;
-            obj[3] = textBox7.Text;
-            obj[4] = textBox8.Text;
-            RegCliente regCliente = new RegCliente();
-            regCliente.registrarCliente(obj);
+            usuario.CI = textBox2.Text;
+            usuario.Nombre = textBox3.Text;
+            usuario.Apellido = textBox4.Text;
+            usuario.Telefono = textBox7.Text;
+            usuario.Direccion = textBox8.Text;
+            usuario.Estado = checkBox1.Checked;
+            usuario.registrar(1);
             limpiar();
         }
         private void checkBox1_CheckedChanged(object sender, EventArgs e)
@@ -61,40 +62,38 @@ namespace ProyectoSistemaProcesos
             if (checkBox1.Checked)
             {
                 checkBox1.Text = "Activo";
-                obj[5] = true;
+                usuario.Estado = true;
             }
             else
             {
                 checkBox1.Text = "Pasivo";
-                obj[5] = false;
+                usuario.Estado = false;
             }
         }
         private void pictureBox2_Click(object sender, EventArgs e)
         {
-            obj[0] = textBox2.Text;
-            obj[1] = textBox3.Text;
-            obj[2] = textBox4.Text;
-            obj[3] = textBox7.Text;
-            obj[4] = textBox8.Text;
-            RegCliente regCliente = new RegCliente();
-            regCliente.ActualizarCliente(obj);
+            usuario.CI = textBox2.Text;
+            usuario.Nombre = textBox3.Text;
+            usuario.Apellido = textBox4.Text;
+            usuario.Telefono = textBox7.Text;
+            usuario.Direccion = textBox8.Text;
+            usuario.Estado = checkBox1.Checked;
+            usuario.Actualizar(1);
             limpiar();
         }
         private void pictureBox7_Click(object sender, EventArgs e)
         {
-            RegCliente regCliente = new RegCliente();
             string ci = textBox1.Text;
-            regCliente.BuscarCliente(ci);
-            Cliente cliente = regCliente.BuscarCliente(ci);
-            if (cliente != null)
+            bool cliente = usuario.Buscar(1, ci);
+            if (cliente != false)
             {
-                textBox2.Text = cliente.CI;
-                textBox3.Text = cliente.Nombre;
-                textBox4.Text = cliente.Apellido;
-                textBox7.Text = cliente.Telefono;
-                textBox8.Text = cliente.Direccion;
+                textBox2.Text = usuario.CI;
+                textBox3.Text = usuario.Nombre;
+                textBox4.Text = usuario.Apellido;
+                textBox7.Text = usuario.Telefono;
+                textBox8.Text = usuario.Direccion;
 
-                if (cliente.Estado == true)
+                if (usuario.Estado == true)
                 {
                     checkBox1.Text = "Activo";
                     checkBox1.Checked = true;
@@ -109,24 +108,22 @@ namespace ProyectoSistemaProcesos
 
         private void textBox1_KeyPress(object sender, KeyPressEventArgs e)
         {
-            // Verifica si el carácter ingresado no es una letra
-            if (!char.IsLetter(e.KeyChar) && !char.IsControl(e.KeyChar) && e.KeyChar != ' ')
+            if (!char.IsLetter(e.KeyChar) && !char.IsControl(e.KeyChar))
             {
-                e.Handled = true; // Ignora el carácter ingresado
+                e.Handled = true;
             }
         }
         private void textBox2_KeyPress(object sender, KeyPressEventArgs e)
         {
-            // Verifica si el carácter ingresado no es una letra
             if (!char.IsNumber(e.KeyChar) && !char.IsControl(e.KeyChar))
             {
-                e.Handled = true; // Ignora el carácter ingresado
+                e.Handled = true;
             }
         }
         private void pictureBox3_Click(object sender, EventArgs e)
         {
-            RegCliente regCliente = new RegCliente();
-            regCliente.EliminarCliente(obj);
+            string ci = textBox1.Text;
+            usuario.Eliminar(1,ci);
         }
     }
 }

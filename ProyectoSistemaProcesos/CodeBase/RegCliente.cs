@@ -66,9 +66,9 @@ namespace ProyectoSistemaProcesos.CodeBase
                 MessageBox.Show("Error en la conexión: " + ex.ToString());
             }
         }
-        public Cliente BuscarCliente(string ci)
+        public Usuario BuscarCliente(string ci)
         {
-            Cliente cliente = null;
+            Usuario cliente = null;
             try
             {
                 string query1 = "select nom_Cli,apell_Cli,CI_Cli,fono_Cli,direc_Cli,E_Cli from Clientes where CI_Cli=@ci;";
@@ -83,7 +83,7 @@ namespace ProyectoSistemaProcesos.CodeBase
                         {
                             if (reader.Read())
                             {
-                                cliente = new Cliente();
+                                cliente = new Usuario();
                                 cliente.Nombre = reader.GetString("nom_Cli");
                                 cliente.Apellido = reader.GetString("apell_Cli");
                                 cliente.CI = reader.GetString("CI_Cli");

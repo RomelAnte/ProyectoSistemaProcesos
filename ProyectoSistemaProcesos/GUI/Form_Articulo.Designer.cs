@@ -209,6 +209,7 @@ namespace ProyectoSistemaProcesos.GUI
             pictureBox7.SizeMode = PictureBoxSizeMode.StretchImage;
             pictureBox7.TabIndex = 21;
             pictureBox7.TabStop = false;
+            pictureBox7.Click += pictureBox7_Click;
             // 
             // label2
             // 
