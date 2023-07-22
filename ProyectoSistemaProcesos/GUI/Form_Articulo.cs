@@ -1,4 +1,5 @@
-﻿using System;
+﻿using ProyectoSistemaProcesos.CodeBase;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -12,6 +13,7 @@ namespace ProyectoSistemaProcesos.GUI
 {
     public partial class Form_Articulo : Form
     {
+        RegArticulo regArticulo = new RegArticulo();
         public Form_Articulo()
         {
             InitializeComponent();
@@ -25,21 +27,9 @@ namespace ProyectoSistemaProcesos.GUI
             form_Menu.ShowDialog();
         }
 
-        private void Form_Articulo_Load(object sender, EventArgs e)
+        private void pictureBox1_Click(object sender, EventArgs e)
         {
-
-        }
-
-<<<<<<< HEAD
-        private void pictureBox7_Click(object sender, EventArgs e)
-        {
-
-=======
-        private void label8_Click(object sender, EventArgs e)
-        {
-
-
->>>>>>> 0d73d35bddaf4c2b0a7caa2c896fbcd441681cd5
+            
         }
     }
 }

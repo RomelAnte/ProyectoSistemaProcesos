@@ -13,7 +13,6 @@ namespace ProyectoSistemaProcesos
 {
     public partial class Form_Cliente : Form
     {
-        object[] obj = new object[7];
         Usuario usuario = new Usuario();
         public void limpiar()
         {
@@ -83,8 +82,8 @@ namespace ProyectoSistemaProcesos
         }
         private void pictureBox7_Click(object sender, EventArgs e)
         {
-            string ci = textBox1.Text;
-            bool cliente = usuario.Buscar(1, ci);
+            usuario.CI = textBox1.Text;
+            bool cliente = usuario.Buscar(1);
             if (cliente != false)
             {
                 textBox2.Text = usuario.CI;
@@ -104,11 +103,12 @@ namespace ProyectoSistemaProcesos
                     checkBox1.Checked = false;
                 }
             }
+            limpiar();
         }
 
         private void textBox1_KeyPress(object sender, KeyPressEventArgs e)
         {
-            if (!char.IsLetter(e.KeyChar) && !char.IsControl(e.KeyChar))
+            if (!char.IsLetter(e.KeyChar) && !char.IsControl(e.KeyChar) && e.KeyChar != ' ')
             {
                 e.Handled = true;
             }
@@ -122,13 +122,9 @@ namespace ProyectoSistemaProcesos
         }
         private void pictureBox3_Click(object sender, EventArgs e)
         {
-            string ci = textBox1.Text;
-            usuario.Eliminar(1,ci);
-        }
-
-        private void pictureBox1_Click_1(object sender, EventArgs e)
-        {
-
+            usuario.CI = textBox1.Text;
+            usuario.Eliminar(1);
+            limpiar();
         }
     }
 }

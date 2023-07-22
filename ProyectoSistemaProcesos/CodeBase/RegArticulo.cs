@@ -8,10 +8,10 @@ using System.Threading.Tasks;
 
 namespace ProyectoSistemaProcesos.CodeBase
 {
-    public class RegArticulo
+    public class RegArticulo:Articulos
     {
         MySqlConnection _connection = new MySqlConnection();
-        string connectionString = "server=localhost;database=BDDSistemProc;uid=root;password=magenkiosharingan123;";
+        string connectionString = "server=localhost;database=BDDSistemProc;uid=root;password=abcd1234;";
 
         public void registrarArticulo(object[] obj)
         {

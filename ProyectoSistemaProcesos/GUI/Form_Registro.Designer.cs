@@ -157,7 +157,7 @@ namespace ProyectoSistemaProcesos
             dateTimePicker1.Format = DateTimePickerFormat.Custom;
             dateTimePicker1.Location = new Point(195, 126);
             dateTimePicker1.Name = "dateTimePicker1";
-            dateTimePicker1.Size = new Size(150, 23);
+            dateTimePicker1.Size = new Size(180, 23);
             dateTimePicker1.TabIndex = 28;
             dateTimePicker1.Value = new DateTime(2023, 7, 14, 0, 0, 0, 0);
             // 
@@ -207,7 +207,7 @@ namespace ProyectoSistemaProcesos
             comboBox1.Items.AddRange(new object[] { "Maquilador" });
             comboBox1.Location = new Point(195, 286);
             comboBox1.Name = "comboBox1";
-            comboBox1.Size = new Size(150, 23);
+            comboBox1.Size = new Size(180, 23);
             comboBox1.TabIndex = 19;
             comboBox1.Text = "-- Seleccione una opcion --";
             // 
@@ -215,42 +215,42 @@ namespace ProyectoSistemaProcesos
             // 
             textBox8.Location = new Point(195, 246);
             textBox8.Name = "textBox8";
-            textBox8.Size = new Size(150, 23);
+            textBox8.Size = new Size(180, 23);
             textBox8.TabIndex = 16;
             // 
             // textBox7
             // 
             textBox7.Location = new Point(195, 206);
             textBox7.Name = "textBox7";
-            textBox7.Size = new Size(150, 23);
+            textBox7.Size = new Size(180, 23);
             textBox7.TabIndex = 15;
             // 
             // textBox6
             // 
             textBox6.Location = new Point(195, 166);
             textBox6.Name = "textBox6";
-            textBox6.Size = new Size(150, 23);
+            textBox6.Size = new Size(180, 23);
             textBox6.TabIndex = 14;
             // 
             // textBox4
             // 
             textBox4.Location = new Point(195, 86);
             textBox4.Name = "textBox4";
-            textBox4.Size = new Size(150, 23);
+            textBox4.Size = new Size(180, 23);
             textBox4.TabIndex = 12;
             // 
             // textBox3
             // 
             textBox3.Location = new Point(195, 46);
             textBox3.Name = "textBox3";
-            textBox3.Size = new Size(150, 23);
+            textBox3.Size = new Size(180, 23);
             textBox3.TabIndex = 11;
             // 
             // textBox2
             // 
             textBox2.Location = new Point(195, 6);
             textBox2.Name = "textBox2";
-            textBox2.Size = new Size(150, 23);
+            textBox2.Size = new Size(180, 23);
             textBox2.TabIndex = 10;
             // 
             // label10

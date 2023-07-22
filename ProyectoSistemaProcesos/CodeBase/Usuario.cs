@@ -23,12 +23,12 @@ namespace ProyectoSistemaProcesos.CodeBase
         string connectionString = "server=localhost;database=bddsistemproc;uid=root;password=abcd1234;";
         public void registrar(int val)
         {
+            string ci = "";
             try
             {
-                if (val == 1)
-                {
 
-                    string ci = "";
+                if (val == 1)
+                {                    
                     string query1 = "select CI_Cli from Clientes where CI_Cli=@CI_Cli;";
                     string query = "INSERT INTO Clientes (nom_Cli, apell_Cli, CI_Cli, fono_Cli, direc_Cli, E_Cli) VALUES (@nom_Cli, @apell_Cli, @CI_Cli, @fono_Cli, @direc_Cli, @E_Cli);";
                     _connection.ConnectionString = connectionString;
@@ -36,7 +36,6 @@ namespace ProyectoSistemaProcesos.CodeBase
                     using (MySqlCommand command = new MySqlCommand(query1, _connection))
                     {
                         command.Parameters.AddWithValue("@CI_Cli", this.CI);
-
                         using (MySqlDataReader reader = command.ExecuteReader())
                         {
                             if (reader.Read())
@@ -74,7 +73,6 @@ namespace ProyectoSistemaProcesos.CodeBase
                 }
                 else
                 {
-                    string ci = "";
                     string query1 = "select CI_Maqui from Maquiladores where CI_Maqui=@CI_Maqui;";
                     string query = "INSERT INTO Maquiladores (CI_Maqui, nom_Maqui, apell_Maqui, fechaNaci, mail_Maqui,fono_Maqui,direc_Maqui,cargo_Maqui,E_Maqui) " +
                         "VALUES (@CI_Maqui, @nom_Maqui, @apell_Maqui, @fechaNaci, @mail_Maqui, @fono_Maqui,@direc_Maqui,@cargo_Maqui,@E_Maqui);";
@@ -131,19 +129,19 @@ namespace ProyectoSistemaProcesos.CodeBase
                 MessageBox.Show("Error en la conexión: " + ex.ToString());
             }
         }
-        public Boolean Buscar(int val, string ci)
+        public bool Buscar(int val)
         {
             try
             {
                 if (val == 1)
                 {
-                    string query1 = "select nom_Cli,apell_Cli,CI_Cli,fono_Cli,direc_Cli,E_Cli from Clientes where CI_Cli=@ci;";
+                    string query1 = "select nom_Cli,apell_Cli,CI_Cli,fono_Cli,direc_Cli,E_Cli from Clientes where CI_Cli=@CI;";
                     using (MySqlConnection _connection = new MySqlConnection(connectionString))
                     {
                         _connection.Open();
                         using (MySqlCommand command = new MySqlCommand(query1, _connection))
                         {
-                            command.Parameters.AddWithValue("@ci", ci);
+                            command.Parameters.AddWithValue("@CI", this.CI);
 
                             using (MySqlDataReader reader = command.ExecuteReader())
                             {
@@ -170,7 +168,7 @@ namespace ProyectoSistemaProcesos.CodeBase
                         _connection.Open();
                         using (MySqlCommand command = new MySqlCommand(query1, _connection))
                         {
-                            command.Parameters.AddWithValue("@CI_Maqui", ci);
+                            command.Parameters.AddWithValue("@CI_Maqui", this.CI);
 
                             using (MySqlDataReader reader = command.ExecuteReader())
                             {
@@ -185,7 +183,6 @@ namespace ProyectoSistemaProcesos.CodeBase
                                     this.Direccion = reader.GetString("direc_Maqui");
                                     this.cargo = reader.GetString("cargo_Maqui");
                                     this.Estado = reader.GetBoolean("E_Maqui");
-
                                 }
                             }
                         }
@@ -319,48 +316,91 @@ namespace ProyectoSistemaProcesos.CodeBase
                 MessageBox.Show("Error en la conexión: " + ex.ToString());
             }
         }
-        public void Eliminar(int val,string ci)
+        public void Eliminar(int val)
         {
             int idCliente = -1;
             try
             {
-                string query1 = "SELECT id_Cli FROM Clientes WHERE CI_Cli = @CI_Cli;";
-                string query = "DELETE FROM Clientes WHERE id_Cli = @id_Cli";
-                _connection.ConnectionString = connectionString;
-                _connection.Open();
-                using (MySqlCommand command = new MySqlCommand(query1, _connection))
+                if (val == 1)
                 {
-                    command.Parameters.AddWithValue("@CI_Cli", this.CI);
-
-                    using (MySqlDataReader reader = command.ExecuteReader())
+                    string query1 = "SELECT id_Cli FROM Clientes WHERE CI_Cli = @CI_Cli;";
+                    string query = "DELETE FROM Clientes WHERE id_Cli = @id_Cli";
+                    _connection.ConnectionString = connectionString;
+                    _connection.Open();
+                    using (MySqlCommand command = new MySqlCommand(query1, _connection))
                     {
-                        if (reader.Read())
+                        command.Parameters.AddWithValue("@CI_Cli", this.CI);
+
+                        using (MySqlDataReader reader = command.ExecuteReader())
                         {
-                            idCliente = reader.GetInt32("id_Cli");
+                            if (reader.Read())
+                            {
+                                idCliente = reader.GetInt32("id_Cli");
+                            }
                         }
+                    }
+                    using (MySqlConnection connection = new MySqlConnection(connectionString))
+                    {
+                        connection.Open();
+
+                        using (MySqlCommand command = new MySqlCommand(query, connection))
+                        {
+                            command.Parameters.AddWithValue("@id_Cli", idCliente);
+
+                            int rowsAffected = command.ExecuteNonQuery();
+
+                            if (rowsAffected > 0)
+                            {
+                                MessageBox.Show("Eliminación exitosa");
+                            }
+                            else
+                            {
+                                MessageBox.Show("No se pudo eliminar el registro");
+                            }
+                        }
+
+                        connection.Close();
                     }
                 }
-                using (MySqlConnection connection = new MySqlConnection(connectionString))
-                {
-                    connection.Open();
-
-                    using (MySqlCommand command = new MySqlCommand(query, connection))
+                else { 
+                    string query1 = "SELECT id_Maqui FROM Maquiladores WHERE CI_Maqui = @CI_Maqui;";
+                    string query = "DELETE FROM Maquiladores WHERE id_Maqui = @id_Maqui";
+                    _connection.ConnectionString = connectionString;
+                    _connection.Open();
+                    using (MySqlCommand command = new MySqlCommand(query1, _connection))
                     {
-                        command.Parameters.AddWithValue("@id_Cli", idCliente);
+                        command.Parameters.AddWithValue("@CI_Maqui", this.CI);
 
-                        int rowsAffected = command.ExecuteNonQuery();
-
-                        if (rowsAffected > 0)
+                        using (MySqlDataReader reader = command.ExecuteReader())
                         {
-                            MessageBox.Show("Eliminación exitosa");
-                        }
-                        else
-                        {
-                            MessageBox.Show("No se pudo eliminar el registro");
+                            if (reader.Read())
+                            {
+                                idCliente = reader.GetInt32("id_Maqui");
+                            }
                         }
                     }
+                    using (MySqlConnection connection = new MySqlConnection(connectionString))
+                    {
+                        connection.Open();
 
-                    connection.Close();
+                        using (MySqlCommand command = new MySqlCommand(query, connection))
+                        {
+                            command.Parameters.AddWithValue("@id_Maqui", idCliente);
+
+                            int rowsAffected = command.ExecuteNonQuery();
+
+                            if (rowsAffected > 0)
+                            {
+                                MessageBox.Show("Eliminación exitosa");
+                            }
+                            else
+                            {
+                                MessageBox.Show("No se pudo eliminar el registro");
+                            }
+                        }
+
+                        connection.Close();
+                    }
                 }
             }
             catch (MySqlException ex)

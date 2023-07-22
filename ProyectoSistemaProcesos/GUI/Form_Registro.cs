@@ -1,22 +1,11 @@
 ﻿using ProyectoSistemaProcesos.CodeBase;
-using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
-using System.Drawing.Drawing2D;
-using System.IO;
-using System.Linq;
-using System.Reflection.Emit;
-using System.Runtime.InteropServices;
-using System.Text;
-using System.Threading.Tasks;
-using System.Windows.Forms;
 
 namespace ProyectoSistemaProcesos
 {
-    public partial class Form_Registro : Form
+    public partial class Form_Registro
+        : Form
     {
+        Usuario regUsuario = new Usuario();
         object[] obj = new object[9];
         public void limpiar()
         {
@@ -29,6 +18,7 @@ namespace ProyectoSistemaProcesos
             textBox8.Clear();
             checkBox1.Checked = false;
             textBox2.Focus();
+            comboBox1.Text = string.Empty;
         }
         public void validar()
         {
@@ -53,7 +43,6 @@ namespace ProyectoSistemaProcesos
         }
         private void pictureBox1_Click(object sender, EventArgs e)
         {
-            Usuario regUsuario = new Usuario();
             regUsuario.CI = textBox2.Text;
             regUsuario.Nombre = textBox3.Text;
             regUsuario.Apellido = textBox4.Text;
@@ -80,32 +69,30 @@ namespace ProyectoSistemaProcesos
             if (checkBox1.Checked)
             {
                 checkBox1.Text = "Activo";
-                obj[5] = true;
+                regUsuario.Estado = true;
             }
             else
             {
                 checkBox1.Text = "Pasivo";
-                obj[5] = false;
+                regUsuario.Estado = false;
             }
         }
         private void pictureBox7_Click(object sender, EventArgs e)
         {
-            Empleado empleado = new Empleado();
-            string ci = textBox1.Text;
-            empleado.Buscar(ci);
-            Empleado empleado1 = empleado.Buscar(ci);
-            if (empleado1 != null)
+            regUsuario.CI = textBox1.Text;
+            bool empleado = regUsuario.Buscar(2);
+            if (empleado != false)
             {
-                textBox2.Text = empleado1.CI;
-                textBox3.Text = empleado1.Nombre;
-                textBox4.Text = empleado1.Apellido;
-                dateTimePicker1.Text = empleado1.fechaNaci;
-                textBox6.Text = empleado1.email;
-                textBox7.Text = empleado1.Telefono;
-                textBox8.Text = empleado1.Direccion;
-                comboBox1.SelectedItem = empleado1.cargo;
+                textBox2.Text = regUsuario.CI;
+                textBox3.Text = regUsuario.Nombre;
+                textBox4.Text = regUsuario.Apellido;
+                dateTimePicker1.Text = regUsuario.fechaNaci;
+                textBox6.Text = regUsuario.email;
+                textBox7.Text = regUsuario.Telefono;
+                textBox8.Text = regUsuario.Direccion;
+                comboBox1.SelectedItem = regUsuario.cargo;
 
-                if (empleado1.Estado == true)
+                if (regUsuario.Estado == true)
                 {
                     checkBox1.Text = "Activo";
                     checkBox1.Checked = true;
@@ -119,34 +106,33 @@ namespace ProyectoSistemaProcesos
         }
         private void pictureBox2_Click(object sender, EventArgs e)
         {
-            /*obj[0] = textBox2.Text;
-            obj[1] = textBox3.Text;
-            obj[2] = textBox4.Text;
-            obj[3] = dateTimePicker1.Text;
-            obj[4] = textBox6.Text;
-            obj[5] = textBox7.Text;
-            obj[6] = textBox8.Text;
-            obj[7] = comboBox1.SelectedItem;
+            regUsuario.CI = textBox2.Text;
+            regUsuario.Nombre = textBox3.Text;
+            regUsuario.Apellido = textBox4.Text;
+            regUsuario.fechaNaci = dateTimePicker1.Text;
+            regUsuario.email = textBox6.Text;
+            regUsuario.Telefono = textBox7.Text;
+            regUsuario.Direccion = textBox8.Text;
+            regUsuario.cargo = Convert.ToString(comboBox1.SelectedItem);
             if (checkBox1.Checked)
             {
                 checkBox1.Text = "Activo";
-                obj[8] = true;
+                regUsuario.Estado = true;
             }
             else
             {
                 checkBox1.Text = "Pasivo";
-                obj[8] = false;
+                regUsuario.Estado = false;
             }
-            RegEmpleado regEmpleado = new RegEmpleado();
-            regEmpleado.ActualizarEmpleado(obj);
-            limpiar();*/
+            regUsuario.Actualizar(2);
+            limpiar();
         }
 
         private void pictureBox3_Click(object sender, EventArgs e)
         {
-            /*RegEmpleado regEmpleado = new RegEmpleado();
-            string ci = textBox1.Text;
-            regEmpleado.EliminarEmpleado(obj);*/
+            regUsuario.CI = textBox1.Text;
+            regUsuario.Eliminar(2);
+            limpiar();
         }
         private void textBox1_KeyPress(object sender, KeyPressEventArgs e)
         {
