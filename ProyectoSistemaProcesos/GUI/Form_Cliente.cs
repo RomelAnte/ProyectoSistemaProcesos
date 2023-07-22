@@ -128,5 +128,10 @@ namespace ProyectoSistemaProcesos
             RegCliente regCliente = new RegCliente();
             regCliente.EliminarCliente(obj);
         }
+
+        private void pictureBox1_Click_1(object sender, EventArgs e)
+        {
+
+        }
     }
 }
