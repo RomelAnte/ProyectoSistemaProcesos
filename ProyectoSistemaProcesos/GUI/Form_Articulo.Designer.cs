@@ -38,13 +38,13 @@ namespace ProyectoSistemaProcesos.GUI
             panel1 = new Panel();
             label9 = new Label();
             panel3 = new Panel();
+            textBox3 = new TextBox();
+            label11 = new Label();
+            dateTimePicker1 = new DateTimePicker();
+            label10 = new Label();
             checkBox1 = new CheckBox();
             label4 = new Label();
             comboBox1 = new ComboBox();
-            label10 = new Label();
-            dateTimePicker1 = new DateTimePicker();
-            textBox3 = new TextBox();
-            label11 = new Label();
             ((System.ComponentModel.ISupportInitialize)pictureBox4).BeginInit();
             ((System.ComponentModel.ISupportInitialize)pictureBox3).BeginInit();
             ((System.ComponentModel.ISupportInitialize)pictureBox2).BeginInit();
@@ -63,6 +63,7 @@ namespace ProyectoSistemaProcesos.GUI
             pictureBox4.Size = new Size(75, 75);
             pictureBox4.TabIndex = 27;
             pictureBox4.TabStop = false;
+            pictureBox4.Click += pictureBox4_Click;
             // 
             // pictureBox3
             // 
@@ -275,6 +276,43 @@ namespace ProyectoSistemaProcesos.GUI
             panel3.Size = new Size(760, 450);
             panel3.TabIndex = 18;
             // 
+            // textBox3
+            // 
+            textBox3.Location = new Point(159, 350);
+            textBox3.Name = "textBox3";
+            textBox3.Size = new Size(200, 23);
+            textBox3.TabIndex = 35;
+            // 
+            // label11
+            // 
+            label11.AutoSize = true;
+            label11.Font = new Font("Times New Roman", 12F, FontStyle.Bold | FontStyle.Italic, GraphicsUnit.Point);
+            label11.Location = new Point(16, 350);
+            label11.Name = "label11";
+            label11.Size = new Size(52, 19);
+            label11.TabIndex = 34;
+            label11.Text = "Costo:";
+            // 
+            // dateTimePicker1
+            // 
+            dateTimePicker1.CustomFormat = "yyyy-MM-dd";
+            dateTimePicker1.Font = new Font("Segoe UI", 11F, FontStyle.Regular, GraphicsUnit.Point);
+            dateTimePicker1.Format = DateTimePickerFormat.Custom;
+            dateTimePicker1.Location = new Point(159, 180);
+            dateTimePicker1.Name = "dateTimePicker1";
+            dateTimePicker1.Size = new Size(200, 27);
+            dateTimePicker1.TabIndex = 33;
+            // 
+            // label10
+            // 
+            label10.AutoSize = true;
+            label10.Font = new Font("Times New Roman", 12F, FontStyle.Bold | FontStyle.Italic, GraphicsUnit.Point);
+            label10.Location = new Point(15, 390);
+            label10.Name = "label10";
+            label10.Size = new Size(60, 19);
+            label10.TabIndex = 32;
+            label10.Text = "Estado:";
+            // 
             // checkBox1
             // 
             checkBox1.AutoSize = true;
@@ -299,47 +337,11 @@ namespace ProyectoSistemaProcesos.GUI
             // 
             comboBox1.DropDownStyle = ComboBoxStyle.DropDownList;
             comboBox1.FormattingEnabled = true;
+            comboBox1.Items.AddRange(new object[] { "Telas: Diferentes tipos de telas, como algodón, lino, seda, poliéster, denim, cuero, etc., se utilizan para confeccionar las prendas.", "", "Hilos: Hilos de diferentes grosores y colores se usan para coser las piezas de tela y dar forma a la prenda.", "", "Botones: Se utilizan para abrochar la ropa y como elementos decorativos.", "", "Cierres: Cremalleras y otros tipos de cierres son comunes en prendas como pantalones, faldas y chaquetas.", "", "Etiquetas: Etiquetas de tela o papel con información sobre la marca, talla, cuidados, etc.", "", "Entretelas: Se utilizan para reforzar áreas específicas de la prenda.", "", "Tijeras y cortadores: Herramientas para cortar las telas y otros materiales de forma precisa.", "", "Máquinas de coser: Se utilizan para coser las piezas de tela y realizar diversas operaciones de costura.", "", "Reglas y cintas métricas: Se usan para medir y marcar las telas y asegurar que las prendas tengan las dimensiones correctas.", "", "Patrones: Plantillas de papel o cartón que se utilizan para cortar las telas según el diseño deseado.", "", "Planchas y tablas de planchar: Se utilizan para alisar las telas y las costuras.", "", "Alfileres y alfileres de seguridad: Se utilizan para mantener las piezas de tela en su lugar antes de coserlas.", "", "Dedales: Protegen los dedos del cosedor al coser a mano.", "", "Máquinas de corte y plotter: Se utilizan para cortar las telas de manera precisa y eficiente.", "", "Cinta de bies: Se utiliza para rematar los bordes de las prendas." });
             comboBox1.Location = new Point(159, 100);
             comboBox1.Name = "comboBox1";
             comboBox1.Size = new Size(199, 23);
             comboBox1.TabIndex = 28;
-            // 
-            // label10
-            // 
-            label10.AutoSize = true;
-            label10.Font = new Font("Times New Roman", 12F, FontStyle.Bold | FontStyle.Italic, GraphicsUnit.Point);
-            label10.Location = new Point(15, 390);
-            label10.Name = "label10";
-            label10.Size = new Size(60, 19);
-            label10.TabIndex = 32;
-            label10.Text = "Estado:";
-            // 
-            // dateTimePicker1
-            // 
-            dateTimePicker1.CustomFormat = "yyyy-MM-dd";
-            dateTimePicker1.Font = new Font("Segoe UI", 11F, FontStyle.Regular, GraphicsUnit.Point);
-            dateTimePicker1.Format = DateTimePickerFormat.Custom;
-            dateTimePicker1.Location = new Point(159, 180);
-            dateTimePicker1.Name = "dateTimePicker1";
-            dateTimePicker1.Size = new Size(200, 23);
-            dateTimePicker1.TabIndex = 33;
-            // 
-            // textBox3
-            // 
-            textBox3.Location = new Point(159, 350);
-            textBox3.Name = "textBox3";
-            textBox3.Size = new Size(200, 23);
-            textBox3.TabIndex = 35;
-            // 
-            // label11
-            // 
-            label11.AutoSize = true;
-            label11.Font = new Font("Times New Roman", 12F, FontStyle.Bold | FontStyle.Italic, GraphicsUnit.Point);
-            label11.Location = new Point(16, 350);
-            label11.Name = "label11";
-            label11.Size = new Size(52, 19);
-            label11.TabIndex = 34;
-            label11.Text = "Costo:";
             // 
             // Form_Articulo
             // 

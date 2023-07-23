@@ -80,11 +80,12 @@ namespace ProyectoSistemaProcesos.GUI
             Color selectedColor = colorDialog.Color;
             string codigoColor = selectedColor.Name;
             obj[1] = codigoColor;
-            MessageBox.Show(codigoColor);
             obj[2] = comboBox2.SelectedItem.ToString();
             obj[3] = textBox2.Text;
-            obj[4] = textBox3.Text;
-            obj[5] = textBox5.Text;
+            string cambio = textBox3.Text;
+            obj[4] = cambio.Replace(',', '.');
+            cambio = textBox5.Text;
+            obj[5] = cambio.Replace(',', '.');
             regMolde.registrarMolde(obj);
 
         }

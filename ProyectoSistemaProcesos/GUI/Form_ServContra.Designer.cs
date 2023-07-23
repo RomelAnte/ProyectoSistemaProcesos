@@ -19,7 +19,6 @@ namespace ProyectoSistemaProcesos
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Form_ServContra));
             panel3 = new Panel();
-            textBox1 = new TextBox();
             comboBox1 = new ComboBox();
             pictureBox5 = new PictureBox();
             pictureBox3 = new PictureBox();
@@ -27,7 +26,6 @@ namespace ProyectoSistemaProcesos
             pictureBox1 = new PictureBox();
             dateTimePicker2 = new DateTimePicker();
             dateTimePicker1 = new DateTimePicker();
-            label6 = new Label();
             label5 = new Label();
             label4 = new Label();
             label3 = new Label();
@@ -47,7 +45,6 @@ namespace ProyectoSistemaProcesos
             // panel3
             // 
             panel3.BackColor = Color.Transparent;
-            panel3.Controls.Add(textBox1);
             panel3.Controls.Add(comboBox1);
             panel3.Controls.Add(pictureBox5);
             panel3.Controls.Add(pictureBox3);
@@ -55,7 +52,6 @@ namespace ProyectoSistemaProcesos
             panel3.Controls.Add(pictureBox1);
             panel3.Controls.Add(dateTimePicker2);
             panel3.Controls.Add(dateTimePicker1);
-            panel3.Controls.Add(label6);
             panel3.Controls.Add(label5);
             panel3.Controls.Add(label4);
             panel3.Controls.Add(label3);
@@ -66,20 +62,11 @@ namespace ProyectoSistemaProcesos
             panel3.Size = new Size(760, 510);
             panel3.TabIndex = 21;
             // 
-            // textBox1
-            // 
-            textBox1.Font = new Font("Segoe UI", 15.75F, FontStyle.Regular, GraphicsUnit.Point);
-            textBox1.Location = new Point(504, 273);
-            textBox1.Name = "textBox1";
-            textBox1.Size = new Size(100, 35);
-            textBox1.TabIndex = 40;
-            // 
             // comboBox1
             // 
             comboBox1.DropDownStyle = ComboBoxStyle.DropDownList;
             comboBox1.Font = new Font("Segoe UI", 15.75F, FontStyle.Regular, GraphicsUnit.Point);
             comboBox1.FormattingEnabled = true;
-            comboBox1.Items.AddRange(new object[] { "-- Seleccione maquilador --" });
             comboBox1.Location = new Point(232, 30);
             comboBox1.Name = "comboBox1";
             comboBox1.Size = new Size(330, 38);
@@ -150,16 +137,6 @@ namespace ProyectoSistemaProcesos
             dateTimePicker1.TabIndex = 34;
             dateTimePicker1.Value = new DateTime(2023, 6, 10, 0, 0, 0, 0);
             // 
-            // label6
-            // 
-            label6.AutoSize = true;
-            label6.Font = new Font("Georgia", 15.75F, FontStyle.Bold | FontStyle.Italic, GraphicsUnit.Point);
-            label6.Location = new Point(355, 280);
-            label6.Name = "label6";
-            label6.Size = new Size(122, 25);
-            label6.TabIndex = 32;
-            label6.Text = "Cantidad:";
-            // 
             // label5
             // 
             label5.AutoSize = true;
@@ -208,6 +185,7 @@ namespace ProyectoSistemaProcesos
             pictureBox4.Size = new Size(75, 75);
             pictureBox4.TabIndex = 27;
             pictureBox4.TabStop = false;
+            pictureBox4.Click += pictureBox4_Click;
             // 
             // panel1
             // 
@@ -239,6 +217,7 @@ namespace ProyectoSistemaProcesos
             Name = "Form_ServContra";
             StartPosition = FormStartPosition.CenterScreen;
             Text = "Form_ServContra";
+            Load += Form_ServContra_Load;
             panel3.ResumeLayout(false);
             panel3.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)pictureBox5).EndInit();
@@ -278,7 +257,6 @@ namespace ProyectoSistemaProcesos
         private PictureBox pictureBox4;
         private Panel panel1;
         private Label label1;
-        private Label label6;
         private Label label5;
         private Label label4;
         private Label label3;
@@ -290,6 +268,5 @@ namespace ProyectoSistemaProcesos
         private PictureBox pictureBox3;
         private PictureBox pictureBox2;
         private PictureBox pictureBox1;
-        private TextBox textBox1;
     }
 }
