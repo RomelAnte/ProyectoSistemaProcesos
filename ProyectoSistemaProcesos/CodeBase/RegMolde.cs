@@ -53,15 +53,12 @@ namespace ProyectoSistemaProcesos.CodeBase
                         if (rowsAffected > 0)
                         {
                             MessageBox.Show("Inserción exitosa");
-                            Console.WriteLine();
                         }
                         else
                         {
                             MessageBox.Show("No se pudo insertar");
-                            Console.WriteLine();
                         }
-                    }
-                    
+                    }                    
                 }
                 else
                 {
@@ -79,7 +76,6 @@ namespace ProyectoSistemaProcesos.CodeBase
                         }
                     }
                 }
-                MessageBox.Show(id);
                 using (MySqlCommand command = new MySqlCommand(query3, _connection))
                 {
                     command.Parameters.AddWithValue("@color_Mold", obj[1]);

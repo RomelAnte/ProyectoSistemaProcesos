@@ -13,7 +13,7 @@ namespace ProyectoSistemaProcesos.GUI
 {
     public partial class Form_Articulo : Form
     {
-        RegArticulo regArticulo = new RegArticulo();
+        Articulos articulos = new Articulos();
         public Form_Articulo()
         {
             InitializeComponent();
@@ -29,7 +29,14 @@ namespace ProyectoSistemaProcesos.GUI
 
         private void pictureBox1_Click(object sender, EventArgs e)
         {
-
+            articulos.Nombre = textBox2.Text;
+            articulos.Cantidad = int.Parse(textBox4.Text);
+            articulos.Material = comboBox1.SelectedItem.ToString();
+            articulos.categoria = textBox4.Text;
+            articulos.FechAdquisicion = dateTimePicker1.Text;
+            articulos.Costo = Convert.ToDouble(textBox7.Text);
+            articulos.Descripcion = textBox8.Text;
+            articulos.registrar();
         }
     }
 }

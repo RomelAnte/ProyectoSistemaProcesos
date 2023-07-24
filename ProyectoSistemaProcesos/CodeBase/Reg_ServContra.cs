@@ -1,4 +1,5 @@
 ﻿using MySql.Data.MySqlClient;
+using ProyectoSistemaProcesos.GUI;
 using System;
 using System.Collections.Generic;
 using System.Data;
@@ -8,11 +9,22 @@ using System.Threading.Tasks;
 
 namespace ProyectoSistemaProcesos.CodeBase
 {
-    public class Reg_ServContra
+    public class Reg_ServContra:ServContra
     {
+        ServContra servContra = new ServContra();
         List<string> nombres = new List<string>();
+        Form_Moldes form_Moldes = new Form_Moldes();
         MySqlConnection _connection = new MySqlConnection();
         string connectionString = "server=localhost;database=bddsistemproc;uid=root;password=abcd1234;";
+        public Reg_ServContra()
+        {
+
+        }
+        public Reg_ServContra(ServContra servContra)
+        {   
+            this.servContra = servContra;
+            MessageBox.Show(Convert.ToString(tipo));
+        }
         public List<string> ObtenerNombresDesdeBD()
         {                    
             try
@@ -27,7 +39,7 @@ namespace ProyectoSistemaProcesos.CodeBase
                         {
                             while (reader.Read())
                             {
-                                string dato = reader["nom_Maqui"].ToString()+" "+reader["apell_Maqui"].ToString(); // Reemplaza "columna" con el nombre de la columna que deseas obtener.
+                                string dato = reader["nom_Maqui"].ToString()+" "+reader["apell_Maqui"].ToString();
                                 nombres.Add(dato);
                             }
                         }
@@ -46,11 +58,10 @@ namespace ProyectoSistemaProcesos.CodeBase
             {
                 string ci = "";
                 string id = "";
+                string val = "";
                 string query = "SELECT id_Maqui FROM Maquiladores where nom_Maqui=@nom_Maqui;";
                 string query1 = "SELECT id_Mold FROM Molde where fkid_TMold=@fkid_TMold;";
                 string query2 = "select id_TMold from TipoMolde where nom_TMold=@nom_TMold;";
-                string query3 = "INSERT INTO Molde (color_Mold,Talla_Mold,Cantidad_Mold,precio_Mold,TotalC_Mold,fkid_TMold)" +
-                    "VALUES (@color_Mold,@Talla_Mold,@Cantidad_Mold,@precio_Mold,@TotalC_Mold,@fkid_TMold);";
                 _connection.ConnectionString = connectionString;
                 _connection.Open();
                 using (MySqlCommand command = new MySqlCommand(query, _connection))
@@ -61,46 +72,56 @@ namespace ProyectoSistemaProcesos.CodeBase
                     {
                         if (reader.Read())
                         {
-                            ci = reader.GetString("nom_Maqui");
+                            ci = reader.GetString("id_Maqui");
                         }
                     }
                 }
+                val = servContra.tipo;
+                MessageBox.Show(val);
                 using (MySqlCommand command = new MySqlCommand(query2, _connection))
                 {
-                    command.Parameters.AddWithValue("@nom_TMold", obj[0]);
+                    command.Parameters.AddWithValue("@nom_TMold", val);
 
                     using (MySqlDataReader reader = command.ExecuteReader())
                     {
                         if (reader.Read())
                         {
-                            id = reader.GetString("id_TMold");
+                            id = reader.GetInt32("id_TMold").ToString();
                         }
                     }
                 }
-                MessageBox.Show(id);
-                using (MySqlCommand command = new MySqlCommand(query3, _connection))
+                if (!string.IsNullOrEmpty(id))
                 {
-                    command.Parameters.AddWithValue("@color_Mold", obj[1]);
-                    command.Parameters.AddWithValue("@Talla_Mold", obj[2]);
-                    command.Parameters.AddWithValue("@Cantidad_Mold", obj[3]);
-                    command.Parameters.AddWithValue("@precio_Mold", obj[4]);
-                    command.Parameters.AddWithValue("@TotalC_Mold", obj[5]);
-                    command.Parameters.AddWithValue("@fkid_TMold", id);
-                    int rowsAffected = command.ExecuteNonQuery();
-                    if (rowsAffected > 0)
+                    string query3 = "INSERT INTO ServicioMaquilacion (FechaI_SMaqui, FechaF_SMaqui, fkid_Maqui, fkid_Mold )" +
+                                    "VALUES (@FechaI_SMaqui, @FechaF_SMaqui, @fkid_Maqui, @fkid_Mold);";
+                    using (MySqlCommand command = new MySqlCommand(query3, _connection))
                     {
-                        MessageBox.Show("Inserción exitosa");
+                        command.Parameters.AddWithValue("@FechaI_SMaqui", obj[1]);
+                        command.Parameters.AddWithValue("@FechaF_SMaqui", obj[2]);
+                        command.Parameters.AddWithValue("@fkid_Maqui", ci);
+                        command.Parameters.AddWithValue("@fkid_Mold", id);
+
+                        int rowsAffected = command.ExecuteNonQuery();
+
+                        if (rowsAffected > 0)
+                        {
+                            MessageBox.Show("Inserción exitosa");
+                        }
+                        else
+                        {
+                            MessageBox.Show("No se pudo insertar");
+                        }
                     }
-                    else
-                    {
-                        MessageBox.Show("No se pudo insertar");
-                    }
+                }
+                else
+                {
+                    MessageBox.Show("Tipo de molde no encontrado");
                 }
                 _connection.Close();
             }
             catch (MySqlException ex)
             {
-
+                MessageBox.Show(Convert.ToString(ex));
             }
         }
     }

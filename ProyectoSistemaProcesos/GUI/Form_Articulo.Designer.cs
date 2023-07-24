@@ -38,8 +38,6 @@ namespace ProyectoSistemaProcesos.GUI
             panel1 = new Panel();
             label9 = new Label();
             panel3 = new Panel();
-            textBox3 = new TextBox();
-            label11 = new Label();
             dateTimePicker1 = new DateTimePicker();
             label10 = new Label();
             checkBox1 = new CheckBox();
@@ -133,7 +131,7 @@ namespace ProyectoSistemaProcesos.GUI
             // 
             label8.AutoSize = true;
             label8.Font = new Font("Times New Roman", 12F, FontStyle.Bold | FontStyle.Italic, GraphicsUnit.Point);
-            label8.Location = new Point(12, 220);
+            label8.Location = new Point(15, 220);
             label8.Name = "label8";
             label8.Size = new Size(52, 19);
             label8.TabIndex = 5;
@@ -173,7 +171,7 @@ namespace ProyectoSistemaProcesos.GUI
             // 
             label3.AutoSize = true;
             label3.Font = new Font("Times New Roman", 12F, FontStyle.Bold | FontStyle.Italic, GraphicsUnit.Point);
-            label3.Location = new Point(19, 20);
+            label3.Location = new Point(15, 20);
             label3.Name = "label3";
             label3.Size = new Size(67, 19);
             label3.TabIndex = 0;
@@ -249,8 +247,6 @@ namespace ProyectoSistemaProcesos.GUI
             // panel3
             // 
             panel3.BackColor = Color.Transparent;
-            panel3.Controls.Add(textBox3);
-            panel3.Controls.Add(label11);
             panel3.Controls.Add(dateTimePicker1);
             panel3.Controls.Add(label10);
             panel3.Controls.Add(checkBox1);
@@ -276,23 +272,6 @@ namespace ProyectoSistemaProcesos.GUI
             panel3.Size = new Size(760, 450);
             panel3.TabIndex = 18;
             // 
-            // textBox3
-            // 
-            textBox3.Location = new Point(159, 350);
-            textBox3.Name = "textBox3";
-            textBox3.Size = new Size(200, 23);
-            textBox3.TabIndex = 35;
-            // 
-            // label11
-            // 
-            label11.AutoSize = true;
-            label11.Font = new Font("Times New Roman", 12F, FontStyle.Bold | FontStyle.Italic, GraphicsUnit.Point);
-            label11.Location = new Point(16, 350);
-            label11.Name = "label11";
-            label11.Size = new Size(52, 19);
-            label11.TabIndex = 34;
-            label11.Text = "Costo:";
-            // 
             // dateTimePicker1
             // 
             dateTimePicker1.CustomFormat = "yyyy-MM-dd";
@@ -307,7 +286,7 @@ namespace ProyectoSistemaProcesos.GUI
             // 
             label10.AutoSize = true;
             label10.Font = new Font("Times New Roman", 12F, FontStyle.Bold | FontStyle.Italic, GraphicsUnit.Point);
-            label10.Location = new Point(15, 390);
+            label10.Location = new Point(15, 351);
             label10.Name = "label10";
             label10.Size = new Size(60, 19);
             label10.TabIndex = 32;
@@ -316,7 +295,7 @@ namespace ProyectoSistemaProcesos.GUI
             // checkBox1
             // 
             checkBox1.AutoSize = true;
-            checkBox1.Location = new Point(159, 390);
+            checkBox1.Location = new Point(159, 351);
             checkBox1.Name = "checkBox1";
             checkBox1.Size = new Size(60, 19);
             checkBox1.TabIndex = 31;
@@ -420,7 +399,5 @@ namespace ProyectoSistemaProcesos.GUI
         private CheckBox checkBox1;
         private DateTimePicker dateTimePicker1;
         private Label label10;
-        private TextBox textBox3;
-        private Label label11;
     }
 }

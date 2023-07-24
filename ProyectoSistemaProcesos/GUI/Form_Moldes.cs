@@ -15,6 +15,7 @@ namespace ProyectoSistemaProcesos.GUI
     public partial class Form_Moldes : Form
     {
         Object[] obj = new Object[6];
+        ServContra servicio = new ServContra();
         public Form_Moldes()
         {
             InitializeComponent();
@@ -77,6 +78,8 @@ namespace ProyectoSistemaProcesos.GUI
             ColorDialog colorDialog = new ColorDialog();
             RegMolde regMolde = new RegMolde();
             obj[0] = comboBox1.SelectedItem.ToString();
+            servicio.tipo = comboBox1.SelectedItem.ToString();
+            MessageBox.Show(servicio.tipo);
             Color selectedColor = colorDialog.Color;
             string codigoColor = selectedColor.Name;
             obj[1] = codigoColor;
@@ -86,8 +89,7 @@ namespace ProyectoSistemaProcesos.GUI
             obj[4] = cambio.Replace(',', '.');
             cambio = textBox5.Text;
             obj[5] = cambio.Replace(',', '.');
-            regMolde.registrarMolde(obj);
-
+            regMolde.registrarMolde(obj);            
         }
     }
 }
